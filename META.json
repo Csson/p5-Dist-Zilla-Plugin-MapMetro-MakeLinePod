@@ -1,5 +1,5 @@
 {
-   "abstract" : "Short intro",
+   "abstract" : "Detailed information about Map::Metro::Plugin::Map::$city",
    "author" : [
       "Erik Carlsson <info@code301.com>"
    ],
@@ -40,13 +40,7 @@
       },
       "runtime" : {
          "requires" : {
-            "perl" : "5.010001"
-         }
-      },
-      "test" : {
-         "requires" : {
-            "Test::More" : "0.96",
-            "Test::NoTabs" : "0"
+            "perl" : "5.014001"
          }
       }
    },
