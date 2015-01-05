@@ -4,17 +4,21 @@ Revision history for Dist-Zilla-Plugin-MapMetro-MakeLinePod
  [API Changes]
 
  [Bug Fixes]
+ - $VERSION was duplicated in the generated pod module.
 
  [Documentation]
 
  [Enhancements]
- - More failsafe formatting of generated pod.
 
  [Meta]
 
  [New Features]
 
  [Revision]
+
+0.1100 2015-01-05T16:54:35Z CET
+ [Enhancements]
+ - More failsafe formatting of generated pod.
 
 0.1002 2015-01-05T15:52:41Z CET
  [Enhancements]

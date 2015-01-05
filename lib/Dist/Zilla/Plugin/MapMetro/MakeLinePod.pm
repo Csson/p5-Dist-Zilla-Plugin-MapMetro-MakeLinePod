@@ -140,7 +140,7 @@ sub make_line_contents {
 $content = sprintf qs{
  package Map::Metro::Plugin::Map::%s::Lines;
 
- # VERSION
+ # %s
 
  1;
 
@@ -162,7 +162,7 @@ $content = sprintf qs{
 
  %s
 
-}, $city, '_END_', $city, $city, $content, $city, '=cut';
+}, $city, 'VERSION', '_END_', $city, $city, $content, $city, '=cut';
 
 $content =~ s{^[ \s]+}{}g;
 
