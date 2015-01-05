@@ -138,27 +138,27 @@ sub make_line_contents {
 
 $content = sprintf q{
  package Map::Metro::Plugin::Map::%s::Lines;
- 
+
  # VERSION
- 
+
  1;
- 
+
  _%s_
- 
+
  =encoding utf-8
- 
+
  =head1 NAME
- 
+
  Map::Metro::Plugin::Map::%s::Lines - Detailed information about Map::Metro::Plugin::Map::%s
- 
+
  =head1 LINES
- 
+
  %s
- 
+
  =head1 SEE ALSO
- 
+
  L<Map::Metro::Plugin::Map::%s>
- 
+
  %s
 
 }, $city, '_END_', $city, $city, $content, $city, '=cut';
