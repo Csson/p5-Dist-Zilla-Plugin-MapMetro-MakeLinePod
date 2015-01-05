@@ -16,6 +16,10 @@ Revision history for Dist-Zilla-Plugin-MapMetro-MakeLinePod
 
  [Revision]
 
+0.1001 2015-01-05T15:45:53Z CET
+ [Enhancements]
+ - Reduce podness of string.
+
 0.10000 2015-01-05T15:37:42Z CET
  - Initial release
 
