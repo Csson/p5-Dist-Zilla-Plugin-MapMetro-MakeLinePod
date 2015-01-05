@@ -8,13 +8,17 @@ Revision history for Dist-Zilla-Plugin-MapMetro-MakeLinePod
  [Documentation]
 
  [Enhancements]
- - Reduce podness of string.
+ - More failsafe formatting of generated pod.
 
  [Meta]
 
  [New Features]
 
  [Revision]
+
+0.1002 2015-01-05T15:52:41Z CET
+ [Enhancements]
+ - Reduce podness of string.
 
 0.1001 2015-01-05T15:45:53Z CET
  [Enhancements]
