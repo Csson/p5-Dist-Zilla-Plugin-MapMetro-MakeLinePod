@@ -135,34 +135,33 @@ sub make_line_contents {
     my $self = shift;
     my $city = shift;
     my $content = join "\n" => @_;
-  #  $content =~ s{ +$}{}g;
 
-return qq{
-package Map::Metro::Plugin::Map::${city}::Lines;
+return sprintf q{
+package Map::Metro::Plugin::Map::%s::Lines;
 
 # VERSION
 
 1;
 
-__END__
+_%s_
 
 =encoding utf-8
 
 =head1 NAME
 
-Map::Metro::Plugin::Map::${city}::Lines - Detailed information about Map::Metro::Plugin::Map::$city
+Map::Metro::Plugin::Map::%s::Lines - Detailed information about Map::Metro::Plugin::Map::%s
 
 =head1 LINES
 
-$content
+%s
 
 =head1 SEE ALSO
 
-L<Map::Metro::Plugin::Map::$city>
+L<Map::Metro::Plugin::Map::%s>
 
-=cut
+%s
 
-};
+}, $city, '_END_', $city, $city, $content, $city, '=cut';
 }
 
 __PACKAGE__->meta->make_immutable;

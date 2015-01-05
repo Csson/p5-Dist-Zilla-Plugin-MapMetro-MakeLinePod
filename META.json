@@ -1,5 +1,5 @@
 {
-   "abstract" : "Detailed information about Map::Metro::Plugin::Map::$city",
+   "abstract" : "Detailed information about Map::Metro::Plugin::Map::%s",
    "author" : [
       "Erik Carlsson <info@code301.com>"
    ],
@@ -68,6 +68,6 @@
          "web" : "https://github.com/Csson/p5-Dist-Zilla-Plugin-MapMetro-MakeLinePod"
       }
    },
-   "version" : "0.0001"
+   "version" : "0.1001"
 }
 
