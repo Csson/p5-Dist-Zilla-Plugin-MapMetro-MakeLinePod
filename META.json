@@ -57,6 +57,17 @@
       }
    },
    "release_status" : "stable",
+   "resources" : {
+      "bugtracker" : {
+         "web" : "https://github.com/Csson/p5-Dist-Zilla-Plugin-MapMetro-MakeLinePod/issues"
+      },
+      "homepage" : "https://github.com/Csson/p5-Dist-Zilla-Plugin-MapMetro-MakeLinePod",
+      "repository" : {
+         "type" : "git",
+         "url" : "https://github.com/Csson/p5-Dist-Zilla-Plugin-MapMetro-MakeLinePod.git",
+         "web" : "https://github.com/Csson/p5-Dist-Zilla-Plugin-MapMetro-MakeLinePod"
+      }
+   },
    "version" : "0.0001"
 }
 

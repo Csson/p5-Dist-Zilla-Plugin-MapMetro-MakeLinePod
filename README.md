@@ -1,6 +1,6 @@
 # NAME
 
-Dist::Zilla::Plugin::MapMetro::MakeLinePod - Automatically include line information
+Dist::Zilla::Plugin::MapMetro::MakeLinePod - Automatically include line and station information
 
 # SYNOPSIS
 

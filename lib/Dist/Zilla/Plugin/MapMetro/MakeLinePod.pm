@@ -175,7 +175,7 @@ __END__
 
 =head1 NAME
 
-Dist::Zilla::Plugin::MapMetro::MakeLinePod - Automatically include line information
+Dist::Zilla::Plugin::MapMetro::MakeLinePod - Automatically include line and station information
 
 =head1 SYNOPSIS
 
