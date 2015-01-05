@@ -27,7 +27,8 @@ sub gather_files {
     my $self = shift;
     my $arg = shift;
 
-    return if !$ENV{'MMLINEPOD'};
+    return if $ENV{'MMNOLINES'};
+    $self->log('Set MMNOLINES=1 to skip building Lines.pm');
 
     my @cities = path(qw/lib Map Metro Plugin Map/)->children(qr/\.pm/);
     return if !scalar @cities;
@@ -39,7 +40,7 @@ sub gather_files {
     $city =~ s{\.pm}{};
     my $mapfile = shift @mapfiles;
 
-    my $graph = Map::Metro::Shim->new(filepath => $mapfile)->parse;
+    my $graph = Map::Metro::Shim->new(filepath => $mapfile)->parse(override_line_change_weight => 99999999);
 
     my @linepod = ();
 
@@ -57,6 +58,7 @@ sub gather_files {
         foreach my $i (0 .. $#stations) {
             my $origin_station = $stations[ $i ];
 
+
             DESTINATION:
             foreach my $j (0 .. $#stations) {
                 my $destination_station = $stations[ $j ];
@@ -67,23 +69,26 @@ sub gather_files {
             }
         }
 
-        $self->log(sprintf 'Line %s, found %s routes', $line->name, scalar @routes);
-        my $chosen_route = (sort { $b->step_count <=> $a->step_count } @routes)[0];
+        # Find the two longest routes (termini<->termini, and then pick the alphabetical order)
+        my $chosen_route =  (sort { $a->get_step(0)->origin_line_station->station->name cmp $b->get_step(0)->origin_line_station->station->name }
+                               (sort { $b->step_count <=> $a->step_count } @routes)[0, 1]
+                            )[0];
 
         my @station_pod;
         foreach my $step ($chosen_route->all_steps) {
-            my $change_to_string = $self->make_change_to_string($graph, $step->origin_line_station);
-            push @station_pod => sprintf '    %s %s', $step->origin_line_station->station->name, $change_to_string;
+            my @change_to_strings = $self->make_change_to_string($graph, $step->origin_line_station);
+            push @station_pod => (' ' x 4) . join ' ' => $step->origin_line_station->station->name, @change_to_strings;
 
             if(!$step->has_next_step) {
-                my $change_to_string = $self->make_change_to_string($graph, $step->destination_line_station);
-                push @station_pod => sprintf '    %s %s', $step->destination_line_station->station->name, $change_to_string;
+                @change_to_strings = $self->make_change_to_string($graph, $step->destination_line_station);
+                push @station_pod => (' ' x 4) .  join ' ' => $step->destination_line_station->station->name, @change_to_strings;
             }
         }
 
-        push @linepod => sprintf '=head2 %s: %s → %s' => $line->description,
-                                                          $chosen_route->get_step(0)->origin_line_station->station->name,
-                                                          $chosen_route->get_step(-1)->destination_line_station->station->name;
+        push @linepod => sprintf '=head2 %s: %s → %s [%s]' => $line->description,
+                                                              $chosen_route->get_step(0)->origin_line_station->station->name,
+                                                              $chosen_route->get_step(-1)->destination_line_station->station->name,
+                                                              $line->name;
 
         push @linepod => '', @station_pod, '';
 
@@ -123,13 +128,14 @@ sub make_change_to_string {
                          :                      ()
                          ;
 
-    return join ' ' => @change_strings;
+    return @change_strings;
 }
 
 sub make_line_contents {
     my $self = shift;
     my $city = shift;
     my $content = join "\n" => @_;
+  #  $content =~ s{ +$}{}g;
 
 return qq{
 package Map::Metro::Plugin::Map::${city}::Lines;
@@ -154,6 +160,8 @@ $content
 
 L<Map::Metro::Plugin::Map::$city>
 
+=cut
+
 };
 }
 
@@ -167,18 +175,26 @@ __END__
 
 =head1 NAME
 
-Dist::Zilla::Plugin::MapMetro::MakeLinePod - Short intro
+Dist::Zilla::Plugin::MapMetro::MakeLinePod - Automatically include line information
 
 =head1 SYNOPSIS
 
-  use Dist::Zilla::Plugin::MapMetro::MakeLinePod;
+  ; in dist.ini
+  [MapMetro::MakeLinePod]
 
 =head1 DESCRIPTION
 
-Dist::Zilla::Plugin::MapMetro::MakeLinePod is ...
+This L<Dist::Zilla> plugin creates a C<::Lines> pod detailing all lines, stations, changes and transfers in the map.
 
 =head1 SEE ALSO
 
+L<Task::MapMetro::Dev> - Map::Metro development tools
+
+L<Map::Metro::Plugin::Map::Barcelona::Lines> - An example
+
+L<Map::Metro>
+
+L<Map::Metro::Plugin::Map>
 
 =head1 AUTHOR
 
