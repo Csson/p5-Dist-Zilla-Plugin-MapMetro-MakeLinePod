@@ -1,6 +1,10 @@
 # NAME
 
-Dist::Zilla::Plugin::MapMetro::MakeLinePod - Automatically include line and station information
+Dist::Zilla::Plugin::MapMetro::MakeLinePod - Automatically include line and station info in Map::Metro map
+
+# VERSION
+
+Version 0.1200, released 2015-01-06.
 
 # SYNOPSIS
 
@@ -13,23 +17,26 @@ This [Dist::Zilla](https://metacpan.org/pod/Dist::Zilla) plugin creates a `::Lin
 
 # SEE ALSO
 
-[Task::MapMetro::Dev](https://metacpan.org/pod/Task::MapMetro::Dev) - Map::Metro development tools
+- [Task::MapMetro::Dev](https://metacpan.org/pod/Task::MapMetro::Dev) - Map::Metro development tools
+- [Map::Metro::Plugin::Map::Barcelona::Lines](https://metacpan.org/pod/Map::Metro::Plugin::Map::Barcelona::Lines) - An example
+- [Map::Metro](https://metacpan.org/pod/Map::Metro)
+- [Map::Metro::Plugin::Map](https://metacpan.org/pod/Map::Metro::Plugin::Map)
 
-[Map::Metro::Plugin::Map::Barcelona::Lines](https://metacpan.org/pod/Map::Metro::Plugin::Map::Barcelona::Lines) - An example
+# SOURCE
 
-[Map::Metro](https://metacpan.org/pod/Map::Metro)
+[https://github.com/Csson/p5-Dist-Zilla-Plugin-MapMetro-MakeLinePod](https://github.com/Csson/p5-Dist-Zilla-Plugin-MapMetro-MakeLinePod)
 
-[Map::Metro::Plugin::Map](https://metacpan.org/pod/Map::Metro::Plugin::Map)
+# HOMEPAGE
+
+[https://metacpan.org/release/Dist-Zilla-Plugin-MapMetro-MakeLinePod](https://metacpan.org/release/Dist-Zilla-Plugin-MapMetro-MakeLinePod)
 
 # AUTHOR
 
 Erik Carlsson <info@code301.com>
 
-# COPYRIGHT
+# COPYRIGHT AND LICENSE
 
-Copyright 2015 - Erik Carlsson
+This software is copyright (c) 2015 by Erik Carlsson <info@code301.com>.
 
-# LICENSE
-
-This library is free software; you can redistribute it and/or modify
-it under the same terms as Perl itself.
+This is free software; you can redistribute it and/or modify it under
+the same terms as the Perl 5 programming language system itself.
