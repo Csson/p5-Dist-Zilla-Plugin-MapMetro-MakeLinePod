@@ -13,6 +13,7 @@ Revision history for Dist-Zilla-Plugin-MapMetro-MakeLinePod
 
  [Meta]
  - Adapted to Podweaver.
+ - Changed dist.ini to DZ::PB::Author::CSSON.
 
  [New Features]
 

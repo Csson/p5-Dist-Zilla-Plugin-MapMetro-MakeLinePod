@@ -4,7 +4,7 @@ Dist::Zilla::Plugin::MapMetro::MakeLinePod - Automatically include line and stat
 
 # VERSION
 
-Version 0.1200, released 2015-01-06.
+Version 0.1102, released 2015-01-06.
 
 # SYNOPSIS
 
