@@ -6,6 +6,7 @@ use utf8;
 package Dist::Zilla::Plugin::MapMetro::MakeLinePod;
 
 # VERSION
+# ABSTRACT: Automatically include line and station info in Map::Metro map
 
 use Moose;
 use namespace::sweep;
@@ -105,7 +106,7 @@ sub gather_files {
                                                               $chosen_route->get_step(-1)->destination_line_station->station->name,
                                                               $line->name;
         my $css_color = $line->color;
-        push @linepod => qqs{
+        push @linepod => qq{
             =for HTML <div style="background-color: $css_color; margin-top: -23px; margin-left: 10px; height: 3px; width: 98%%;"></div>
         };
 
@@ -183,7 +184,7 @@ sub make_line_contents {
  =cut
 }, 'ABSTRACT';
 
-    $content =~ s{\s+=(begin|end)}{\n\n=$1}g;
+    $content =~ s{\s+=(begin|end|for)}{\n\n=$1}g;
 
     return $content;
 
@@ -191,13 +192,13 @@ sub make_line_contents {
 
 __PACKAGE__->meta->make_immutable;
 
-# ABSTRACT: Automatically include line and station info in Map::Metro map
-
 1;
 
 __END__
 
 =pod
+
+=encoding utf-8
 
 =head1 SYNOPSIS
 
