@@ -15,7 +15,6 @@ use List::AllUtils qw/any all uniq/;
 use Types::Standard qw/Str Maybe/;
 use Map::Metro::Shim;
 use syntax 'qi';
-use syntax 'qs';
 
 use Dist::Zilla::File::InMemory;
 with 'Dist::Zilla::Role::FileGatherer';

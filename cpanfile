@@ -6,8 +6,7 @@ requires 'namespace::sweep';
 requires 'Path::Tiny';
 requires 'Types::Standard';
 requires 'List::AllUtils';
-requires 'Syntax::Feature::Qi';
-requires 'Syntax::Feature::Qs';
+requires 'Syntax::Feature::Qi', '0.2004';
 requires 'syntax';
 
 requires 'Map::Metro', '0.2206';

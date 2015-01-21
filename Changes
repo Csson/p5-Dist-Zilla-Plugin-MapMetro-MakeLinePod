@@ -18,7 +18,7 @@ Revision history for Dist-Zilla-Plugin-MapMetro-MakeLinePod
  [Revision]
 
  [Requirements]
- - Added Syntax::Feature::Qi
+ - Changed Syntax::Feature::Qi to ::Qi
  - Removed some author test dependencies
 
 0.1200 2015-01-07T00:13:48Z CET
