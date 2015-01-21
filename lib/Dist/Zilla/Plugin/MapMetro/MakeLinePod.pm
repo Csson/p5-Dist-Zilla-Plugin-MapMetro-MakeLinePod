@@ -30,7 +30,7 @@ sub gather_files {
     my $arg = shift;
 
     return if $ENV{'MMNOLINES'};
-    $self->log('Set MMNOLINES=1 to skip building Lines.pm');
+    $self->log('Set MMNOLINES=1 to skip building Lines.pod');
 
     my @cities = path(qw/lib Map Metro Plugin Map/)->children(qr/\.pm/);
     return if !scalar @cities;
@@ -105,12 +105,8 @@ sub gather_files {
                                                               $chosen_route->get_step(-1)->destination_line_station->station->name,
                                                               $line->name;
         my $css_color = $line->color;
-        push @linepod => qq{
-            =begin HTML
-
-            <div style="background-color: $css_color; margin-top: -23px; margin-left: 10px; height: 3px; width: 98%%;"></div>
-
-            =end HTML
+        push @linepod => qqs{
+            =for HTML <div style="background-color: $css_color; margin-top: -23px; margin-left: 10px; height: 3px; width: 98%%;"></div>
         };
 
         push @linepod => '', @station_pod, '';
@@ -118,7 +114,7 @@ sub gather_files {
     }
 
     my $file = Dist::Zilla::File::InMemory->new(
-        name => "lib/Map/Metro/Plugin/Map/$city/Lines.pm",
+        name => "lib/Map/Metro/Plugin/Map/$city/Lines.pod",
         content => $self->make_line_contents($city, @linepod),
     );
     $self->add_file($file);
@@ -132,22 +128,28 @@ sub make_change_to_string {
     my $line_station = shift;
 
     my @change_strings = ();
-    my @other_lines = $line_station->station->filter_lines(sub { $_->id ne $line_station->line->id });
-    push @change_strings => scalar @other_lines ? sprintf '(%s)', join ', ' => map { $_->name } @other_lines
+    my @other_lines = map { $_->name } $line_station->station->filter_lines(sub { $_->id ne $line_station->line->id });
+    @other_lines = (all { $_ =~ /^\d+$/ } @other_lines) ? sort { $a <=> $b } @other_lines
+                 :                                        sort { $a cmp $b } @other_lines
+                 ;
+
+    push @change_strings => scalar @other_lines ? sprintf '(%s)', join ', ' => @other_lines
                          :                       ()
                          ;
 
     my @transfers = $graph->filter_transfers(sub { $_->origin_station->id == $line_station->station->id });
     push @change_strings => scalar @transfers ? join ' ' => map {
                                                                 sprintf ('[%s: %s]', $_->destination_station->name,
-                                                                                     join ', ' => map { $_->name } $_->destination_station->all_lines ) } @transfers
+                                                                join ', ' => map { $_->name } $_->destination_station->all_lines )
+                                                            } @transfers
                          :                      ()
                          ;
 
     @transfers = $graph->filter_transfers(sub { $_->destination_station->id == $line_station->station->id });
     push @change_strings => scalar @transfers ? join ' ' => map {
                                                                 sprintf ('[%s: %s]', $_->origin_station->name,
-                                                                                     join ', ' => map { $_->name } $_->origin_station->all_lines ) } @transfers
+                                                                join ', ' => map { $_->name } $_->origin_station->all_lines )
+                                                            } @transfers
                          :                      ()
                          ;
 
@@ -159,18 +161,13 @@ sub make_line_contents {
     my $city = shift;
     my $content = join "\n" => @_;
 
-$content = sprintf qqi{
- package Map::Metro::Plugin::Map::${city}::Lines;
-
- # %s
-
- 1;
-
+    $content = sprintf qqi{
+ # PODNAME: Map::Metro::Plugin::Map::${city}::Lines
  # %s: Lines and stations in the $city map
 
- __%s__
-
  =pod
+
+ =encoding utf-8
 
  =head1 LINES
 
@@ -184,12 +181,11 @@ $content = sprintf qqi{
  * L<Map::Metro>
 
  =cut
+}, 'ABSTRACT';
 
-}, 'VERSION', 'ABSTRACT', 'END';
+    $content =~ s{\s+=(begin|end)}{\n\n=$1}g;
 
-$content =~ s{\s+=(begin|end)}{\n\n=$1}g;
-
-return $content;
+    return $content;
 
 }
 
