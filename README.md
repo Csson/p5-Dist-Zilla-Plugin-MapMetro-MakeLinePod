@@ -1,6 +1,6 @@
 # NAME
 
-Map::Metro::Plugin::Map::${city}::Lines - Automatically include line and station info in Map::Metro map
+Dist::Zilla::Plugin::MapMetro::MakeLinePod - Automatically include line and station info in Map::Metro map
 
 # VERSION
 

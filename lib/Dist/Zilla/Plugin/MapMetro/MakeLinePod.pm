@@ -163,7 +163,7 @@ sub make_line_contents {
     my $content = join "\n" => @_;
 
     $content = sprintf qqi{
- # PODNAME: Map::Metro::Plugin::Map::${city}::Lines
+ # %s: Map::Metro::Plugin::Map::${city}::Lines
  # %s: Lines and stations in the $city map
 
  =pod
@@ -182,7 +182,7 @@ sub make_line_contents {
  * L<Map::Metro>
 
  =cut
-}, 'ABSTRACT';
+}, 'PODNAME', 'ABSTRACT';
 
     $content =~ s{\s+=(begin|end|for)}{\n\n=$1}g;
 
