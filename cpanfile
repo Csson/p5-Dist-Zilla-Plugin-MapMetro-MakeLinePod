@@ -10,8 +10,8 @@ requires 'Syntax::Feature::Qi';
 requires 'Syntax::Feature::Qs';
 requires 'syntax';
 
-requires 'Map::Metro', '0.2100';
+requires 'Map::Metro', '0.2206';
 
 on 'test' => sub {
-    requires 'Test::NoTabs';
+    requires 'Test::More', '0.96';
 };

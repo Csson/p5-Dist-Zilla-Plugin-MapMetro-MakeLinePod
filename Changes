@@ -8,16 +8,27 @@ Revision history for Dist-Zilla-Plugin-MapMetro-MakeLinePod
  [Documentation]
 
  [Enhancements]
+ - Now produces a Lines.pod (instead of Lines.pm).
+ - If possible, sorts possible line changes numerically.
+
+ [Meta]
+
+ [New Features]
+
+ [Revision]
+
+ [Requirements]
+ - Added Syntax::Feature::Qi
+ - Removed some author test dependencies
+
+0.1200 2015-01-07T00:13:48Z CET
+ [Enhancements]
  - Show each line's color.
  - All changes and transfers are lined up.
 
  [Meta]
  - Adapted to Podweaver.
  - Changed dist.ini to DZ::PB::Author::CSSON.
-
- [New Features]
-
- [Revision]
 
 0.1101 2015-01-05T21:53:45Z CET
  [Bug Fixes]
