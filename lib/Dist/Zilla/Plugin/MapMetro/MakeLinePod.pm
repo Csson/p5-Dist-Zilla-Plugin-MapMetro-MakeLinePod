@@ -9,7 +9,7 @@ package Dist::Zilla::Plugin::MapMetro::MakeLinePod;
 # ABSTRACT: Automatically include line and station info in Map::Metro map
 
 use Moose;
-use namespace::sweep;
+use namespace::autoclean;
 use Path::Tiny;
 use List::AllUtils qw/any all uniq/;
 use Types::Standard qw/Str Maybe/;

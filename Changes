@@ -8,14 +8,22 @@ Revision history for Dist-Zilla-Plugin-MapMetro-MakeLinePod
  [Documentation]
 
  [Enhancements]
- - Now produces a Lines.pod (instead of Lines.pm).
- - If possible, sorts possible line changes numerically.
 
  [Meta]
 
  [New Features]
 
+ [Requirements]
+ - Now uses namespace::autoclean instead of ::sweep.
+ - Now uses [MakeMaker] instead of [ModuleBuild*]
+ - Prereqs is set in dist.ini (cpanfile removed)
+
  [Revision]
+
+0.1201 2015-01-21T16:16:14Z CET
+ [Enhancements]
+ - Now produces a Lines.pod (instead of Lines.pm).
+ - If possible, sorts possible line changes numerically.
 
  [Requirements]
  - Changed Syntax::Feature::Qi to ::Qi
