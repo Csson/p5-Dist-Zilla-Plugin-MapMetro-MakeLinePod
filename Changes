@@ -14,11 +14,16 @@ Revision history for Dist-Zilla-Plugin-MapMetro-MakeLinePod
  [New Features]
 
  [Requirements]
+
+ [Revision]
+
+ [Testing]
+
+0.1202 2015-11-02T16:20:07Z UTC
+ [Requirements]
  - Now uses namespace::autoclean instead of ::sweep.
  - Now uses [MakeMaker] instead of [ModuleBuild*]
  - Prereqs is set in dist.ini (cpanfile removed)
-
- [Revision]
 
 0.1201 2015-01-21T16:16:14Z CET
  [Enhancements]

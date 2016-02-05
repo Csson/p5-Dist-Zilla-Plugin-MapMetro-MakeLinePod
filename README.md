@@ -2,7 +2,7 @@
 
 Dist::Zilla::Plugin::MapMetro::MakeLinePod - Automatically include line and station info in Map::Metro map
 
-![Requires Perl 5.14](https://img.shields.io/badge/perl-5.14-brightgreen.svg) [![Travis status](https://api.travis-ci.org/Csson/p5-Dist-Zilla-Plugin-MapMetro-MakeLinePod.svg?branch=master)](https://travis-ci.org/Csson/p5-Dist-Zilla-Plugin-MapMetro-MakeLinePod)
+![Requires Perl 5.14+](https://img.shields.io/badge/perl-5.14+-brightgreen.svg) [![Travis status](https://api.travis-ci.org/Csson/p5-Dist-Zilla-Plugin-MapMetro-MakeLinePod.svg?branch=master)](https://travis-ci.org/Csson/p5-Dist-Zilla-Plugin-MapMetro-MakeLinePod)
 
 # VERSION
 
